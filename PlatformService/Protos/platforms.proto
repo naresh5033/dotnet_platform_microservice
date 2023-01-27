@@ -1,0 +1,21 @@
+// this file is the contract b/w  what will get passed b/w the server and client
+syntax = "proto3";
+
+option csharp_namespace = "PlatformService";
+
+service GrpcPlatform {
+    rpc GetAllPlatforms (GetAllRequest) returns (PlatformResponse);
+}
+
+message GetAllRequest {}
+
+message GrpcPlatformModel{
+    int32 platformId = 1; // this 1 isn't platformId, its just the position number, for every prop we define we ve to give the postion numb
+    string name = 2;
+    string publisher = 3;
+}
+
+message PlatformResponse {
+    repeated GrpcPlatformModel platform = 1;
+} //finally define this proto file in our csproj file as Item Group tag 
+
